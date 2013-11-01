@@ -2765,7 +2765,7 @@ class TCPDF_STATIC {
 	 */
 	public static function fileGetContents($file) {
 		// array of possible alternative paths/URLs
-		$alt = array($file);
+		$alt = array();
 		// replace URL relative path with full real server path
 		if ((strlen($file) > 1)
 			AND ($file[0] == '/')
