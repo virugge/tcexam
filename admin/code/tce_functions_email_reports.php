@@ -47,7 +47,7 @@ function F_send_report_emails($test_id, $user_id=0, $testuser_id=0, $group_id=0,
 	require_once('../../shared/code/tce_class_mailer.php');
 	require_once('tce_functions_user_select.php');
 
-	$mode = intval($mode);
+	$mode = intval($mode); $modetemp = $mode;
 	if ($test_id > 0) {
 		$test_id = intval($test_id);
 		if (!F_isAuthorizedUser(K_TABLE_TESTS, 'test_id', $test_id, 'test_user_id')) {
@@ -202,6 +202,7 @@ function F_send_report_emails($test_id, $user_id=0, $testuser_id=0, $group_id=0,
 			$progresslog = '['.$l['t_error'].'] '.$tu['user_name'].': '.$l['m_unknown_email'].''; //output user data
 		}
 		echo $progresslog.'<br />'.K_NEWLINE; //output processed emails
+		$mode = $modetemp;
 		flush(); // force browser output
 	}
 
